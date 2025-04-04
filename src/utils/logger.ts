@@ -1,6 +1,6 @@
 //utils/logger.ts
 import { appendToFile } from './fsHelper';
-import { LOG_DIR } from '../_config/_config';
+import { LOG_DIR } from '../_common/constants';
 
 /**
  * Supported log levels for filtering output

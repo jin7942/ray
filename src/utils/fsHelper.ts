@@ -1,7 +1,7 @@
 //utils/fsHelper.ts
 import fs from 'fs/promises';
 import path from 'path';
-import { MAX_LOG_DIR_SIZE } from '../_config/_config';
+import { MAX_LOG_DIR_SIZE } from '../_common/constants';
 
 /**
  * Ensure that a directory exists, create it recursively if it doesn't.
