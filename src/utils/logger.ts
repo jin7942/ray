@@ -1,8 +1,11 @@
 /**
- * Custom logger for lightweight
+ * Custom logger for lightweight CLI tools
+ * - Console color output
+ * - Log file writing
+ * - Controlled by config.internal.logdir & logLevel
  */
 import { appendToFile } from './fsHelper';
-import { LOG_DIR } from '../_common/constants';
+import { getLogSettings } from '../config/global';
 
 /**
  * Supported log levels for filtering output
@@ -12,18 +15,13 @@ type LogLevel = 'info' | 'warn' | 'error';
 const LEVELS: LogLevel[] = ['info', 'warn', 'error'];
 
 /**
- * Current log level. Default is 'info'.
- * Can be overridden via environment variable: LOG_LEVEL=warn
- */
-const CURRENT_LEVEL = (process.env.LOG_LEVEL as LogLevel) || 'info';
-
-/**
  * Determines whether the current log level allows this message
  *
  * @param level - Level of the message to log
  */
 function shouldLog(level: LogLevel): boolean {
-    return LEVELS.indexOf(level) >= LEVELS.indexOf(CURRENT_LEVEL);
+    const { level: currentLevel } = getLogSettings();
+    return LEVELS.indexOf(level) >= LEVELS.indexOf(currentLevel as LogLevel);
 }
 
 /**
@@ -34,7 +32,6 @@ function shouldLog(level: LogLevel): boolean {
  */
 function formatConsole(level: LogLevel, message: string): string {
     const timestamp = new Date().toISOString();
-
     const color = {
         info: '\x1b[32m', // Green
         warn: '\x1b[33m', // Yellow
@@ -56,7 +53,7 @@ function formatFile(level: LogLevel, message: string): string {
 }
 
 /**
- * Get today's log file name (e.g., "2025-04-04.log")
+ * Get today's log file name (e.g., "2025-04-05.log")
  */
 function getLogFileName(): string {
     return `${new Date().toISOString().slice(0, 10)}.log`;
@@ -76,7 +73,9 @@ export const logger = {
         if (shouldLog('info')) {
             const output = formatConsole('info', msg);
             console.log(output);
-            appendToFile(LOG_DIR, getLogFileName(), formatFile('info', msg));
+
+            const { logDir } = getLogSettings();
+            appendToFile(logDir, getLogFileName(), formatFile('info', msg));
         }
     },
 
@@ -89,7 +88,9 @@ export const logger = {
         if (shouldLog('warn')) {
             const output = formatConsole('warn', msg);
             console.warn(output);
-            appendToFile(LOG_DIR, getLogFileName(), formatFile('warn', msg));
+
+            const { logDir } = getLogSettings();
+            appendToFile(logDir, getLogFileName(), formatFile('warn', msg));
         }
     },
 
@@ -105,7 +106,9 @@ export const logger = {
         if (shouldLog('error')) {
             const output = formatConsole('error', fullMessage);
             console.error(output);
-            appendToFile(LOG_DIR, getLogFileName(), formatFile('error', fullMessage));
+
+            const { logDir } = getLogSettings();
+            appendToFile(logDir, getLogFileName(), formatFile('error', fullMessage));
         }
     },
 };

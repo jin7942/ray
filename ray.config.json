@@ -1,0 +1,20 @@
+{
+    "projects": [
+        {
+            "name": "nextuse",
+            "repo": "https://github.com/user/nextuse.git",
+            "branch": "main",
+            "buildCommand": "npm run build",
+            "docker": {
+                "image": "nextuse-image",
+                "containername": "nextuse-container",
+                "path": "./Dockerfile"
+            },
+            "internal": {
+                "logdir": "./logs",
+                "maxLogDirSize": 5242880,
+                "logLevel": "info"
+            }
+        }
+    ]
+}

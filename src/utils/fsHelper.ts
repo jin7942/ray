@@ -1,9 +1,13 @@
 /**
- * A collection of file system uillity function
+ * A collection of file system utility functions used by RAY
+ * - Directory creation
+ * - Log writing with auto-trim
+ * - File existence checks
+ * - UTF-8 file reading
  */
 import fs from 'fs/promises';
 import path from 'path';
-import { MAX_LOG_DIR_SIZE } from '../_common/constants';
+import { getLogSettings } from '../config/global';
 
 /**
  * Ensure that a directory exists, create it recursively if it doesn't.
@@ -19,12 +23,12 @@ export async function ensureDirectoryExists(dirPath: string): Promise<void> {
 }
 
 /**
- * Append a log message to a file
- * - Automatically trims old log files if total log size exceeds threshold
+ * Append a log message to a file.
+ * - Automatically trims old log files if total log size exceeds threshold.
  *
- * @param dir Directory path to save logs
- * @param filename File name (e.g., 2025-04-04.log)
- * @param content Log message to write
+ * @param dir - Directory path to save logs.
+ * @param filename - File name (e.g., 2025-04-05.log).
+ * @param content - Log message to write.
  */
 export async function appendToFile(dir: string, filename: string, content: string): Promise<void> {
     await ensureDirectoryExists(dir);
@@ -36,11 +40,15 @@ export async function appendToFile(dir: string, filename: string, content: strin
         console.warn('[fsHelper] Failed to write log:', err);
     }
 
-    trimLogsIfTooLarge(dir, MAX_LOG_DIR_SIZE).catch((e) => console.warn('[fsHelper] Failed to trim logs:', e));
+    const { maxSize } = getLogSettings();
+    trimLogsIfTooLarge(dir, maxSize).catch((e) => console.warn('[fsHelper] Failed to trim logs:', e));
 }
 
 /**
- * Get total size of all files in a directory (in bytes)
+ * Get total size of all files in a directory (in bytes).
+ *
+ * @param dir - Directory path.
+ * @returns The total size in bytes.
  */
 async function getDirectorySize(dir: string): Promise<number> {
     try {
@@ -60,10 +68,10 @@ async function getDirectorySize(dir: string): Promise<number> {
 }
 
 /**
- * Check total directory size and delete oldest files if limit exceeded
+ * Check total directory size and delete oldest files if limit exceeded.
  *
- * @param dir logs directory
- * @param maxSizeBytes size threshold
+ * @param dir - Log directory.
+ * @param maxSizeBytes - Size threshold in bytes.
  */
 export async function trimLogsIfTooLarge(dir: string, maxSizeBytes: number): Promise<void> {
     try {
@@ -78,7 +86,7 @@ export async function trimLogsIfTooLarge(dir: string, maxSizeBytes: number): Pro
                 })
         );
 
-        logFiles.sort((a, b) => a.time - b.time); // 오래된 순
+        logFiles.sort((a, b) => a.time - b.time); // Sort oldest first
 
         let totalSize = logFiles.reduce((sum, f) => sum + f.size, 0);
         while (totalSize > maxSizeBytes && logFiles.length > 0) {

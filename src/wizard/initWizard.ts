@@ -87,6 +87,13 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         '5242880' // default value
     );
     const maxLogDirSize = Number(maxLogDirSizeInput);
+    const logLevel = await askValidated(
+        'LogLevel: info, warn, error (default : info) ',
+        (input) => {
+            return input.length > 0 ? null : '';
+        },
+        'info'
+    );
 
     const config: Config = {
         name,
@@ -101,6 +108,7 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         internal: {
             logdir,
             maxLogDirSize,
+            logLevel,
         },
     };
 

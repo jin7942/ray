@@ -63,6 +63,12 @@ export interface Config {
          * @example 5242880
          */
         maxLogDirSize?: number;
+
+        /**
+         * Level of the log
+         * @example "info" or "warn" or "error"
+         */
+        logLevel?: string;
     };
 
     /**
