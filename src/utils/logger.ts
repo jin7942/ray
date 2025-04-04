@@ -1,4 +1,6 @@
-//utils/logger.ts
+/**
+ * Custom logger for lightweight
+ */
 import { appendToFile } from './fsHelper';
 import { LOG_DIR } from '../_common/constants';
 
@@ -17,6 +19,7 @@ const CURRENT_LEVEL = (process.env.LOG_LEVEL as LogLevel) || 'info';
 
 /**
  * Determines whether the current log level allows this message
+ *
  * @param level - Level of the message to log
  */
 function shouldLog(level: LogLevel): boolean {
@@ -25,6 +28,7 @@ function shouldLog(level: LogLevel): boolean {
 
 /**
  * Generate a console-formatted log message (with ANSI color)
+ *
  * @param level - Log level
  * @param message - Message string
  */
@@ -37,11 +41,12 @@ function formatConsole(level: LogLevel, message: string): string {
         error: '\x1b[31m', // Red
     }[level];
 
-    return `${color}[ray][${level.toUpperCase()}][${timestamp}] ${message}\x1b[0m`;
+    return `${color}[RAY][${level.toUpperCase()}][${timestamp}] ${message}\x1b[0m`;
 }
 
 /**
  * Generate a plain string for log file output
+ *
  * @param level - Log level
  * @param message - Message string
  */
@@ -64,6 +69,7 @@ function getLogFileName(): string {
 export const logger = {
     /**
      * Info-level log (green)
+     *
      * @param msg - The message to log
      */
     info: (msg: string): void => {
@@ -76,6 +82,7 @@ export const logger = {
 
     /**
      * Warning-level log (yellow)
+     *
      * @param msg - The message to log
      */
     warn: (msg: string): void => {
@@ -89,6 +96,7 @@ export const logger = {
     /**
      * Error-level log (red)
      * Also includes stack trace if an Error object is passed
+     *
      * @param msg - Message string or Error object
      */
     error: (msg: string | Error): void => {
