@@ -1,0 +1,30 @@
+{
+    "name": "ray",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jin7942/ray.git"
+    },
+    "keywords": [],
+    "author": "jin7942",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jin7942/ray/issues"
+    },
+    "homepage": "https://github.com/jin7942/ray#readme",
+    "devDependencies": {
+        "nodemon": "^3.1.9",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.2"
+    },
+    "scripts:": {
+        "build": "tsc",
+        "start": "node dist/bin/ray.js",
+        "dev": "nodemon --watch src --exec ts-node src/bin/ray.ts"
+    }
+}

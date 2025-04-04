@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "ES2020", // 최신 JS 문법 사용
+        "module": "CommonJS", // Node.js에 적합
+        "rootDir": "./src", // 소스 코드 폴더
+        "outDir": "./dist", // 컴파일된 JS 출력 위치
+        "strict": true, // 타입 엄격하게
+        "esModuleInterop": true, // import 호환성
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}
