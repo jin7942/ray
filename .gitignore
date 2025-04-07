@@ -1,1 +1,19 @@
-/node_modules/
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Config and logs (user-generated or runtime)
+ray.config.json
+logs/
+
+# IDE & OS specific
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Test coverage & lockfiles (optional)
+coverage/
+*.log
+*.lock

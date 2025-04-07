@@ -1,16 +1,19 @@
 {
     "compilerOptions": {
-        "target": "ES2020", // 최신 JS 문법 사용
-        "module": "CommonJS", // Node.js에 적합
-        "rootDir": "./src", // 소스 코드 폴더
-        "outDir": "./dist", // 컴파일된 JS 출력 위치
-        "strict": true, // 타입 엄격하게
-        "esModuleInterop": true, // import 호환성
+        "target": "ES2020", // 최신 JS 문법
+        "module": "CommonJS", // Node.js용
+        "rootDir": "./src", // 소스 코드 경로
+        "outDir": "./dist", // 빌드 결과물 경로
+
+        "declaration": true, // .d.ts 파일 생성
+        "emitDeclarationOnly": false, // .js와 .d.ts 같이 생성
+        "declarationMap": false, // 소스맵은 불필요
+
+        "strict": true, // 엄격한 타입 검사
+        "esModuleInterop": true, // import/export 호환
         "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true
+        "skipLibCheck": true // node_modules 타입 스킵
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"],
-    "outDir": "dist",
-    "rootDir": "src"
+    "include": ["src/**/*", "_types/**/*"], // 타입 정의도 포함
+    "exclude": ["node_modules"]
 }
