@@ -1,5 +1,5 @@
 {
-    "name": "ray",
+    "name": "@jin7942/ray",
     "version": "1.0.0",
     "description": "Lightweight CI/CD deployment tool powered by Docker and Git",
     "main": "dist/index.js",
