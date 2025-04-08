@@ -77,6 +77,8 @@ const config = await loadProjectConfig('my-app');
 await runRayPipeline(config);
 ```
 
+### [document](./DOCUMENT.md)
+
 ---
 
 ## Requirements

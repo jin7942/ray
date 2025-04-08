@@ -78,6 +78,8 @@ const config = await loadProjectConfig('my-app');
 await runRayPipeline(config);
 ```
 
+### [document](./DOCUMENT.md)
+
 ---
 
 ## 시스템 요구 사항
