@@ -24,7 +24,7 @@ RAY clones your GitHub repo, runs your build command, builds a Docker image, and
 ## Installation
 
 ```bash
-npm install -g ray
+npm install -g @jin7942/ray
 ```
 
 ---

@@ -25,7 +25,7 @@ RAY는 GitHub 저장소를 클론하고, 빌드하고, Docker 이미지로 만�
 ## 설치 방법
 
 ```bash
-npm install -g ray
+npm install -g @jin7942/ray
 ```
 
 ---
