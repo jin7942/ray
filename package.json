@@ -1,5 +1,8 @@
 {
     "name": "@jin7942/ray",
+    "publishConfig": {
+        "access": "public"
+    },
     "version": "1.0.0",
     "description": "Lightweight CI/CD deployment tool powered by Docker and Git",
     "main": "dist/index.js",
