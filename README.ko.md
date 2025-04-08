@@ -72,7 +72,7 @@ ray help               # 도움말 출력
 ## 라이브러리로 사용하기
 
 ```ts
-import { loadProjectConfig, runRayPipeline } from 'ray';
+import { loadProjectConfig, runRayPipeline } from '@jin7942/ray';
 
 const config = await loadProjectConfig('my-app');
 await runRayPipeline(config);

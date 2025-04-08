@@ -71,7 +71,7 @@ ray help               # Show help
 ## Library Usage
 
 ```ts
-import { loadProjectConfig, runRayPipeline } from 'ray';
+import { loadProjectConfig, runRayPipeline } from '@jin7942/ray';
 
 const config = await loadProjectConfig('my-app');
 await runRayPipeline(config);
