@@ -111,6 +111,13 @@ MIT
 
 ---
 
+## Contributing
+
+This project is open source and welcomes contributions, suggestions, and feedback.
+
+-   Open an issue: [GitHub Issues](https://github.com/jin7942/ray/issues)
+-   Pull requests are welcome.
+
 ## Links
 
 -   GitHub: https://github.com/jin7942/ray

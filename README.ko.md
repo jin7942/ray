@@ -113,6 +113,14 @@ MIT
 
 ---
 
+## 기여
+
+본 프로젝트는 오픈소스로 자유롭게 확장/수정이 가능합니다.  
+기여, 제안, 피드백은 언제든지 환영합니다.
+
+-   이슈 등록: [GitHub Issues](https://github.com/jin7942/ray/issues)
+-   풀 리퀘스트: 자유롭게 생성해주세요
+
 ## 프로젝트 링크
 
 -   GitHub 저장소: https://github.com/jin7942/ray
