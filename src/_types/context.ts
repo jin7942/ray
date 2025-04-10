@@ -23,4 +23,7 @@ export interface StepContext {
 
     /** Temporary working directory for this pipeline */
     workspace: string;
+
+    /** path to .env file to load environment variables (optional) */
+    envFilePath?: string;
 }

@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.0.1**
+**ver: 1.1.0**
 
 [한국어 README 보기](./README.ko.md)
 
@@ -63,7 +63,8 @@ ray help               # Show help
             "internal": {
                 "logdir": "./logs",
                 "maxLogDirSize": 5242880,
-                "logLevel": "info"
+                "logLevel": "info",
+                "envFilePath": "./.env"
             }
         }
     ]
@@ -112,8 +113,8 @@ RAY automates the essential steps in a simple, controlled, and hackable way — 
 
 | Version | Date       | Description                                      |
 | ------- | ---------- | ------------------------------------------------ |
-| v1.0.0  | 2024-04-09 | Initial release. Core pipeline features complete |
-| v1.1.0  | Upcoming   | Environment overrides, healthcheck customization |
+| v1.0.0  | 2025-04-09 | Initial release. Core pipeline features complete |
+| v1.1.0  | 2025-04-10 | Support for setting environment variables        |
 
 ---
 

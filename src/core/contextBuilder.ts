@@ -15,6 +15,7 @@ export function createContext(config: Config): StepContext {
         buildCommand: config.buildCommand,
         docker: config.docker,
         env: config.env,
+        envFilePath: config.internal?.envFilePath,
         workspace: `/tmp/ray-${config.name.replace(/\s+/g, '-').toLowerCase()}`,
     };
 }

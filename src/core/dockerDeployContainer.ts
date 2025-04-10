@@ -14,15 +14,17 @@ const execAsync = promisify(exec);
  * @param ctx - Pipeline execution context
  */
 export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
-    const { docker } = ctx;
+    const { docker, envFilePath } = ctx;
     const original = docker.containername;
     const temp = `${original}-temp`;
     const image = docker.image;
 
+    const envFileOption = envFilePath ? `--env-file ${envFilePath}` : '';
+
     // Run new container
     logger.info(`Starting temporary container: ${temp}`);
     try {
-        await execAsync(`docker run -d --name ${temp} ${image}`);
+        await execAsync(`docker run -d --name ${temp} ${envFileOption} ${image}`);
     } catch (e) {
         throw new Error(`Failed to start new container: ${e instanceof Error ? e.message : String(e)}`);
     }

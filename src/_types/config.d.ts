@@ -69,6 +69,12 @@ export interface Config {
          * @example "info" or "warn" or "error"
          */
         logLevel?: string;
+
+        /**
+         * Optional path to .env file to load environment variables
+         * @example "./.env"
+         */
+        envFilePath?: string;
     };
 
     /**
