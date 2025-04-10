@@ -9,7 +9,7 @@ export { runRayPipeline, runAllPipelines } from './main';
 export { createContext } from './core/contextBuilder';
 
 // Optional: export individual core functions for advanced control
-export { gitCloneRepo, buildProject, dockerBuildImage, dockerDeployContainer } from './core';
+export { gitCloneRepo, dockerBuildImage, dockerDeployContainer } from './core';
 
 export { loadAllProjects, loadProjectConfig } from './config/configLoader';
 

@@ -1,7 +1,7 @@
 import { Config } from './_types/config';
 import { logger } from './utils/logger';
 import { ProgressBar } from './utils/progress';
-import { gitCloneRepo, buildProject, dockerBuildImage, dockerDeployContainer, createContext } from './core/index';
+import { gitCloneRepo, dockerBuildImage, dockerDeployContainer, createContext } from './core/index';
 
 /**
  * Runs the full CI/CD pipeline for a single project.
