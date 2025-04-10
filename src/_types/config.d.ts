@@ -23,7 +23,7 @@ export interface Config {
      * Build command to run before deploying
      * @example "npm run build"
      */
-    buildCommand: string;
+    // buildCommand: string;
 
     /**
      * Set the docker information

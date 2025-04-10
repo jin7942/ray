@@ -10,15 +10,15 @@ const execAsync = promisify(exec);
  *
  * @param ctx - Pipeline execution context
  */
-export async function buildProject(ctx: StepContext): Promise<void> {
-    const { buildCommand, workspace } = ctx;
+// export async function buildProject(ctx: StepContext): Promise<void> {
+//     const { buildCommand, workspace } = ctx;
 
-    logger.info(`Running build command: ${buildCommand}`);
+//     logger.info(`Running build command: ${buildCommand}`);
 
-    try {
-        await execAsync(buildCommand, { cwd: workspace });
-        logger.info('Build completed successfully.');
-    } catch (e) {
-        throw new Error(`Build failed: ${e instanceof Error ? e.message : String(e)}`);
-    }
-}
+//     try {
+//         await execAsync(buildCommand, { cwd: workspace });
+//         logger.info('Build completed successfully.');
+//     } catch (e) {
+//         throw new Error(`Build failed: ${e instanceof Error ? e.message : String(e)}`);
+//     }
+// }

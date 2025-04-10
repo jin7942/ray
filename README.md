@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.1.0**
+**ver: 1.2.0**
 
 [한국어 README 보기](./README.ko.md)
 
@@ -17,7 +17,6 @@ RAY clones your GitHub repo, runs your build command, builds a Docker image, and
 ## Features
 
 -   Clone GitHub repositories
--   Custom build commands
 -   Docker image creation
 -   Zero-downtime container replacement
 -   JSON-based config file
@@ -54,7 +53,9 @@ ray help               # Show help
             "name": "my-app",
             "repo": "https://github.com/user/my-app.git",
             "branch": "main",
-            "buildCommand": "npm run build",
+            //"buildCommand": "npm run build",
+            // As of v1.2.0, RAY no longer executes buildCommand during deployment.
+            // You must define the build process directly inside your Dockerfile.
             "docker": {
                 "image": "my-app-image",
                 "containername": "my-app-container",
@@ -70,6 +71,38 @@ ray help               # Show help
     ]
 }
 ```
+
+## Dockerfile Example (`Dockerfile`)
+
+```docker
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+COPY . .
+
+RUN apk update && apk upgrade
+RUN npm install
+RUN npm run build
+
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/package-lock.json .
+
+RUN apk add --no-cache git
+
+RUN npm install --omit=dev
+
+EXPOSE 7979
+
+CMD ["node", "dist/server.js"]
+
+```
+
+### You must write your build logic inside the Dockerfile. RAY does not run build commands anymore as of v1.2.0.
 
 ---
 
@@ -111,10 +144,11 @@ RAY automates the essential steps in a simple, controlled, and hackable way — 
 
 ## Release History
 
-| Version | Date       | Description                                      |
-| ------- | ---------- | ------------------------------------------------ |
-| v1.0.0  | 2025-04-09 | Initial release. Core pipeline features complete |
-| v1.1.0  | 2025-04-10 | Support for setting environment variables        |
+| Version | Date       | Description                                                                 |
+| ------- | ---------- | --------------------------------------------------------------------------- |
+| v1.0.0  | 2025-04-09 | Initial release. Core pipeline features complete                            |
+| v1.1.0  | 2025-04-10 | Support for setting environment variables                                   |
+| v1.2.0  | 2025-04-11 | Supports external log directory mounting. Build process moved to Dockerfile |
 
 ---
 

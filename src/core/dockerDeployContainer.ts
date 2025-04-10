@@ -2,6 +2,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import { StepContext } from '../_types/context';
 import { logger } from '../utils/logger';
+import path from 'path';
 
 const execAsync = promisify(exec);
 
@@ -14,17 +15,18 @@ const execAsync = promisify(exec);
  * @param ctx - Pipeline execution context
  */
 export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
-    const { docker, envFilePath } = ctx;
+    const { docker, envFilePath, logDir } = ctx;
     const original = docker.containername;
     const temp = `${original}-temp`;
     const image = docker.image;
 
     const envFileOption = envFilePath ? `--env-file ${envFilePath}` : '';
+    const logDirOption = path.resolve(logDir || './logs');
 
     // Run new container
     logger.info(`Starting temporary container: ${temp}`);
     try {
-        await execAsync(`docker run -d --name ${temp} ${envFileOption} ${image}`);
+        await execAsync(`docker run -d --name ${temp} -v ${logDirOption}:/app/logs ${envFileOption} ${image}`);
     } catch (e) {
         throw new Error(`Failed to start new container: ${e instanceof Error ? e.message : String(e)}`);
     }

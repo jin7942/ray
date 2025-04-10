@@ -13,7 +13,7 @@ export interface StepContext {
     branch?: string;
 
     /** Build command to run */
-    buildCommand: string;
+    // buildCommand: string;
 
     /** Docker configuration */
     docker: Config['docker'];
@@ -26,4 +26,7 @@ export interface StepContext {
 
     /** path to .env file to load environment variables (optional) */
     envFilePath?: string;
+
+    // path to log output
+    logDir?: string;
 }

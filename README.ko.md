@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.1.0**
+**ver: 1.2.0**
 
 **단순하고 가벼운 자동 배포 도구 RAY**
 
@@ -18,7 +18,6 @@ RAY는 GitHub 저장소를 클론하고, 빌드하고, Docker 이미지로 만�
 ## 주요 기능
 
 -   GitHub 저장소 클론
--   커스텀 빌드 명령어 실행
 -   Docker 이미지 생성 및 컨테이너 배포
 -   기존 컨테이너 무중단 교체
 -   JSON 기반 설정 파일
@@ -55,7 +54,8 @@ ray help               # 도움말 출력
             "name": "my-app",
             "repo": "https://github.com/user/my-app.git",
             "branch": "main",
-            "buildCommand": "npm run build",
+            //"buildCommand": "npm run build", 더 이상 RAY가 빌드커멘드를 수행하지 않습니다.
+            // 도커 파일에서 실행 되도록 변경 되었습니다.
             "docker": {
                 "image": "my-app-image",
                 "containername": "my-app-container",
@@ -71,6 +71,38 @@ ray help               # 도움말 출력
     ]
 }
 ```
+
+## 도커 파일 예시 (`DockerFile`)
+
+```docker
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+COPY . .
+
+RUN apk update && apk upgrade
+RUN npm install
+RUN npm run build
+
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/package-lock.json .
+
+RUN apk add --no-cache git
+
+RUN npm install --omit=dev
+
+EXPOSE 7979
+
+CMD ["node", "dist/server.js"]
+
+```
+
+### 도커파일 내에 빌드 로직을 반드시 포함하여야 합니다. RAY 1.2.0 버전부터는 더 이상 빌드 커맨드가 작동하지 않습니다.
 
 ---
 
@@ -113,10 +145,11 @@ RAY는 배포를 가장 단순한 형태로 구성하면서도 필요한 모든 
 
 ## 릴리즈 히스토리
 
-| 버전   | 날짜       | 설명                                |
-| ------ | ---------- | ----------------------------------- |
-| v1.0.0 | 2025-04-09 | 첫 정식 릴리즈. 기본 기능 구현 완료 |
-| v1.1.0 | 2025-04-10 | 환경변수 설정 지원                  |
+| 버전   | 날짜       | 설명                                                           |
+| ------ | ---------- | -------------------------------------------------------------- |
+| v1.0.0 | 2025-04-09 | 첫 정식 릴리즈. 기본 기능 구현 완료                            |
+| v1.1.0 | 2025-04-10 | 환경변수 설정 지원                                             |
+| v1.2.0 | 2025-04-11 | 컨테이너 외부 로그 저장 지원, Dockerfile 내 빌드 방식으로 전환 |
 
 ---
 

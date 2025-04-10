@@ -59,7 +59,7 @@ async function createDefaultConfig() {
                 name: 'my-project',
                 repo: 'https://github.com/your/repo.git',
                 branch: 'main',
-                buildCommand: 'npm run build',
+                // buildCommand: 'npm run build',
                 docker: {
                     image: 'your-image',
                     containername: 'your-container',
@@ -69,6 +69,7 @@ async function createDefaultConfig() {
                     logdir: './logs',
                     maxLogDirSize: 5242880,
                     logLevel: 'info',
+                    envFilePath: './.env',
                 },
                 env: {
                     NODE_ENV: 'production',

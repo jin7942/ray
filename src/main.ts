@@ -17,8 +17,8 @@ export async function runRayPipeline(config: Config): Promise<void> {
         bar.step('Cloning repository...');
         await gitCloneRepo(ctx);
 
-        bar.step('Building project...');
-        await buildProject(ctx);
+        // bar.step('Building project...');
+        // await buildProject(ctx);
 
         bar.step('Building Docker image...');
         await dockerBuildImage(ctx);

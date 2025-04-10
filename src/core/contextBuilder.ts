@@ -12,10 +12,11 @@ export function createContext(config: Config): StepContext {
     return {
         repo: config.repo,
         branch: config.branch,
-        buildCommand: config.buildCommand,
+        // buildCommand: config.buildCommand,
         docker: config.docker,
         env: config.env,
         envFilePath: config.internal?.envFilePath,
+        logDir: config.internal?.logdir,
         workspace: `/tmp/ray-${config.name.replace(/\s+/g, '-').toLowerCase()}`,
     };
 }
