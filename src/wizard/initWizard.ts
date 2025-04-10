@@ -49,13 +49,13 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         },
         'main' // default value
     );
-    const buildCommand = await askValidated(
-        'Build command (default: npm run build): ',
-        (input) => {
-            return input.length > 0 ? null : '';
-        },
-        'npm run build' // default value
-    );
+    // const buildCommand = await askValidated(
+    //     'Build command (default: npm run build): ',
+    //     (input) => {
+    //         return input.length > 0 ? null : '';
+    //     },
+    //     'npm run build' // default value
+    // );
 
     const image = await askValidated('Docker image name: ', (input) => {
         return input.length > 0 ? null : 'You must enter Docker image name';
@@ -99,7 +99,7 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         name,
         repo,
         branch,
-        buildCommand,
+        // buildCommand,
         docker: {
             image,
             containername,

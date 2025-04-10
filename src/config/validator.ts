@@ -14,9 +14,9 @@ export function validateConfig(config: Config): void {
         throw new Error('"repo" must start with "https://".');
     }
 
-    if (!config.buildCommand?.trim()) {
-        throw new Error('"buildCommand" is required.');
-    }
+    // if (!config.buildCommand?.trim()) {
+    //     throw new Error('"buildCommand" is required.');
+    // }
 
     const docker = config.docker;
     if (!docker || !docker.image || !docker.containername || !docker.path) {
