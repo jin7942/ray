@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.3.0**
+**ver: 1.3.1**
 
 **단순하고 가벼운 자동 배포 도구 RAY**
 
@@ -60,7 +60,7 @@ ray help               # 도움말 출력
                 "image": "my-app-image",
                 "containername": "my-app-container",
                 "path": "./Dockerfile",
-                "network": "network" // --network 옵션을 지원합니다.
+                "network": "["net1", "net2"]" // --network 옵션을 지원합니다.
             },
             "internal": {
                 "logdir": "./logs",

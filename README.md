@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.3.0**
+**ver: 1.3.1**
 
 [한국어 README 보기](./README.ko.md)
 
@@ -60,7 +60,7 @@ ray help               # Show help
                 "image": "my-app-image",
                 "containername": "my-app-container",
                 "path": "./Dockerfile",
-                "network": "network" // Added --network support for Docker containers
+                "network": "["net1", "net2"]" // Added --network support for Docker containers
             },
             "internal": {
                 "logdir": "./logs",
