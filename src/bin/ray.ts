@@ -64,6 +64,7 @@ async function createDefaultConfig() {
                     image: 'your-image',
                     containername: 'your-container',
                     path: './Dockerfile',
+                    network: '',
                 },
                 internal: {
                     logdir: './logs',

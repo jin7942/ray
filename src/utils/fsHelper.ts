@@ -125,3 +125,16 @@ export async function exists(filePath: string): Promise<boolean> {
         return false;
     }
 }
+
+/**
+ * Remove directory from directory path
+ *
+ * @param dirPath  - The path to remove target of diretory path
+ */
+export async function removeDirectory(dirPath: string): Promise<void> {
+    try {
+        await fs.rm(dirPath, { recursive: true, force: true });
+    } catch (err) {
+        console.warn(`[fsHelper] Failed to remove directory: ${dirPath}`, err);
+    }
+}

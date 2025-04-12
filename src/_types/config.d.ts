@@ -46,6 +46,12 @@ export interface Config {
          * @example "./Dockerfile"
          */
         path: string;
+
+        /**
+         * Docker network to connect the container to
+         * @example "jin-network"
+         */
+        network?: string;
     };
 
     /**

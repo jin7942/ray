@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.2.0**
+**ver: 1.3.0**
 
 [한국어 README 보기](./README.ko.md)
 
@@ -59,7 +59,8 @@ ray help               # Show help
             "docker": {
                 "image": "my-app-image",
                 "containername": "my-app-container",
-                "path": "./Dockerfile"
+                "path": "./Dockerfile",
+                "network": "network" // Added --network support for Docker containers
             },
             "internal": {
                 "logdir": "./logs",
@@ -149,6 +150,7 @@ RAY automates the essential steps in a simple, controlled, and hackable way — 
 | v1.0.0  | 2025-04-09 | Initial release. Core pipeline features complete                            |
 | v1.1.0  | 2025-04-10 | Support for setting environment variables                                   |
 | v1.2.0  | 2025-04-11 | Supports external log directory mounting. Build process moved to Dockerfile |
+| v1.3.0  | 2025-04-12 | Added --network support for ocker containers. Improved Git clone process    |
 
 ---
 
