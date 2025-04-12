@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.3.1**
+**ver: 1.4.0**
 
 [한국어 README 보기](./README.ko.md)
 
@@ -60,7 +60,8 @@ ray help               # Show help
                 "image": "my-app-image",
                 "containername": "my-app-container",
                 "path": "./Dockerfile",
-                "network": "["net1", "net2"]" // Added --network support for Docker containers
+                "network": "["net1", "net2"]", // Added --network support for Docker containers
+                "volumes": "["/host/path:/app/path", "/tmp/test:/app/test"]" // Added support for Docker container volume mounts.
             },
             "internal": {
                 "logdir": "./logs",
@@ -151,6 +152,7 @@ RAY automates the essential steps in a simple, controlled, and hackable way — 
 | v1.1.0  | 2025-04-10 | Support for setting environment variables                                   |
 | v1.2.0  | 2025-04-11 | Supports external log directory mounting. Build process moved to Dockerfile |
 | v1.3.0  | 2025-04-12 | Added --network support for ocker containers. Improved Git clone process    |
+| v1.4.0  | 2025-04-12 | Added support for Docker container volume mounts.                           |
 
 ---
 

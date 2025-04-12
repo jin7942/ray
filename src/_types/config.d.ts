@@ -52,6 +52,12 @@ export interface Config {
          * @example "["net1", "net2", "net3"]"
          */
         network?: [string];
+
+        /**
+         *  An array of volume mounts. Each volume specifies a path to mount from the host system
+         * @example "["/host/path:/app/path", "/tmp/test:/app/test"]"
+         */
+        volumes?: [string];
     };
 
     /**

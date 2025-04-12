@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.3.1**
+**ver: 1.4.0**
 
 **단순하고 가벼운 자동 배포 도구 RAY**
 
@@ -60,7 +60,8 @@ ray help               # 도움말 출력
                 "image": "my-app-image",
                 "containername": "my-app-container",
                 "path": "./Dockerfile",
-                "network": "["net1", "net2"]" // --network 옵션을 지원합니다.
+                "network": "["net1", "net2"]", // --network 옵션을 지원합니다.
+                "volumes": "["/host/path:/app/path", "/tmp/test:/app/test"]" // 도커 컨테이너 볼륨 마운트 지원 추가
             },
             "internal": {
                 "logdir": "./logs",
@@ -152,6 +153,7 @@ RAY는 배포를 가장 단순한 형태로 구성하면서도 필요한 모든 
 | v1.1.0 | 2025-04-10 | 환경변수 설정 지원                                             |
 | v1.2.0 | 2025-04-11 | 컨테이너 외부 로그 저장 지원, Dockerfile 내 빌드 방식으로 전환 |
 | v1.3.0 | 2025-04-12 | 이미지 빌드시 네트워크 지정 옵션 지원, Git clone 프로세스 개선 |
+| v1.4.0 | 2025-04-12 | 도커 컨테이너 볼륨 마운트 지원 추가.                           |
 
 ---
 

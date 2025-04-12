@@ -27,11 +27,16 @@ export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
             return docker.network.map((net: string) => `--network ${net}`).join(' ');
         } else return '';
     };
+    const volumesOption = () => {
+        if (docker.volumes !== undefined && docker.volumes.length > 0) {
+            return docker.volumes.map((volume: string) => `-v ${volume}`).join(' ');
+        } else return '';
+    };
 
     // Run new container
     logger.info(`Starting temporary container: ${temp}`);
     try {
-        await execAsync(`docker run -d --name ${temp} -v ${logDirOption}:/app/logs ${envFileOption} ${networkOption} ${image}`);
+        await execAsync(`docker run -d --name ${temp} -v ${logDirOption}:/app/logs ${envFileOption} ${networkOption} ${volumesOption} ${image}`);
     } catch (e) {
         throw new Error(`Failed to start new container: ${e instanceof Error ? e.message : String(e)}`);
     }
