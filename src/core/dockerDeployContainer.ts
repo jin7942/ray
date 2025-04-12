@@ -22,7 +22,11 @@ export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
 
     const envFileOption = envFilePath ? `--env-file ${envFilePath}` : '';
     const logDirOption = path.resolve(logDir || './logs');
-    const networkOption = docker.network ? `--network ${docker.network} ` : '';
+    const networkOption = () => {
+        if (docker.network != undefined && docker.network.length > 0) {
+            return docker.network.map((net: string) => `--network ${net}`).join(' ');
+        } else return '';
+    };
 
     // Run new container
     logger.info(`Starting temporary container: ${temp}`);

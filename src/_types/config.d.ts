@@ -49,9 +49,9 @@ export interface Config {
 
         /**
          * Docker network to connect the container to
-         * @example "jin-network"
+         * @example "["net1", "net2", "net3"]"
          */
-        network?: string;
+        network?: [string];
     };
 
     /**
