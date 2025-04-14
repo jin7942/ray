@@ -61,7 +61,7 @@ ray help               # Show help
                 "containername": "my-app-container",
                 "path": "./Dockerfile",
                 "network": "['net1', 'net2']", // Added --network support for Docker containers
-                "volumes": "['/host/path:/app/path', '/tmp/test:/app/test"]' // Added support for Docker container volume mounts.
+                "volumes": "['/host/path:/app/path', '/tmp/test:/app/test']" // Added support for Docker container volume mounts.
             },
             "internal": {
                 "logdir": "./logs",
