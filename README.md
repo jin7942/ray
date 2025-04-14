@@ -46,7 +46,7 @@ ray help               # Show help
 
 ## Configuration Example (`ray.config.json`)
 
-```json
+```jsonc
 {
     "projects": [
         {
