@@ -18,7 +18,7 @@ export async function loadProjectConfig(projectName: string, configPath = './ray
         const raw = await fs.readFile(absolutePath, 'utf-8');
         const configFile: ConfigFile = JSON.parse(raw);
 
-        const project = configFile.projects.find((p) => p.name === projectName);
+        const project = configFile.projects.find((p) => p.name.trim() === projectName.trim());
 
         if (!project) {
             logger.error(`Project "${projectName}" not found in config file.`);
