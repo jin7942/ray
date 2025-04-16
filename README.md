@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.4.1**
+**ver: 1.4.2**
 
 [한국어 README 보기](./README.ko.md)
 
@@ -60,8 +60,8 @@ ray help               # Show help
                 "image": "my-app-image",
                 "containername": "my-app-container",
                 "path": "./Dockerfile",
-                "network": ['net1', 'net2'], // Added --network support for Docker containers
-                "volumes": ['/host/path:/app/path', '/tmp/test:/app/test'] // Added support for Docker container volume mounts.
+                "network": ["net1", "net2"], // Added --network support for Docker containers
+                "volumes": ["/host/path:/app/path", "/tmp/test:/app/test"] // Added support for Docker container volume mounts.
             },
             "internal": {
                 "logdir": "./logs",
