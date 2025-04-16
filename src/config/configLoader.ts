@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { Config, ConfigFile } from '../_types/config';
 import { logger } from '../utils/logger';
+import { setGlobalConfig } from './global';
 
 /**
  * Loads the full config file and returns the project matching the given name.
@@ -24,6 +25,8 @@ export async function loadProjectConfig(projectName: string, configPath = './ray
             logger.error(`Project "${projectName}" not found in config file.`);
             throw new Error(`Project "${projectName}" does not exist in ${absolutePath}`);
         }
+
+        setGlobalConfig(project);
 
         logger.info(`Loaded config for project: ${projectName}`);
         return project;
