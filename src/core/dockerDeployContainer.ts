@@ -22,10 +22,8 @@ export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
 
     const envFileOption = envFilePath ? `--env-file ${envFilePath}` : '';
     const logDirOption = path.resolve(logDir || './logs');
-    const networkOption = () => {
-        if (docker.network != undefined && docker.network.length > 0) {
-            return docker.network.map((net: string) => `--network ${net}`).join(' ');
-        } else return '';
+    const networkOption = (): string[] => {
+        return Array.isArray(docker.network) ? docker.network : docker.network ? [docker.network] : [];
     };
     const volumesOption = () => {
         if (docker.volumes !== undefined && docker.volumes.length > 0) {
@@ -36,7 +34,19 @@ export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
     // Run new container
     logger.info(`Starting temporary container: ${temp}`);
     try {
-        await execAsync(`docker run -d --name ${temp} -v ${logDirOption}:/app/logs ${envFileOption} ${networkOption} ${volumesOption} ${image}`);
+        await execAsync(`docker run -d --name ${temp} -v ${logDirOption}:/app/logs ${envFileOption} ${volumesOption} ${image}`);
+        for (const net of networkOption()) {
+            const checkCmd = `docker network inspect ${net}`;
+            try {
+                await execAsync(checkCmd);
+            } catch {
+                await execAsync(`docker network create ${net}`);
+                logger.info(`Created docker network: ${net}`);
+            }
+
+            await execAsync(`docker network connect ${net} ${temp}`);
+            logger.info(`Connected docker network: ${net} ${temp}`);
+        }
     } catch (e) {
         throw new Error(`Failed to start new container: ${e instanceof Error ? e.message : String(e)}`);
     }
