@@ -133,7 +133,7 @@ await runRayPipeline(config);
 
 Want to see how to use RAY in a real server?
 
-## Check out [RAY Auto Deploy Server](https://github.com/jin7942/ra-auto-deploy-server) — a lightweight webhook server that uses RAY for CI/CD automation.
+## Check out [RAY Auto Deploy Server](https://github.com/jin7942/ray-auto-deploy-server) — a lightweight webhook server that uses RAY for CI/CD automation.
 
 ---
 
