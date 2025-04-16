@@ -60,8 +60,8 @@ ray help               # 도움말 출력
                 "image": "my-app-image",
                 "containername": "my-app-container",
                 "path": "./Dockerfile",
-                "network": "['net1', 'net2']", // --network 옵션을 지원합니다.
-                "volumes": "['/host/path:/app/path', '/tmp/test:/app/test']" // 도커 컨테이너 볼륨 마운트 지원 추가
+                "network": ['net1', 'net2'], // --network 옵션을 지원합니다.
+                "volumes": ['/host/path:/app/path', '/tmp/test:/app/test'] // 도커 컨테이너 볼륨 마운트 지원 추가
             },
             "internal": {
                 "logdir": "./logs",
