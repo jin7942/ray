@@ -133,7 +133,7 @@ await runRayPipeline(config);
 
 서버에서 사용 예
 
-## [RAY Auto Deploy Server](https://github.com/jin7942/ra-auto-deploy-server) — webhock 이벤트를 수신하여 자동배포를 수행하는 서버 입니다.
+## [RAY Auto Deploy Server](https://github.com/jin7942/ray-auto-deploy-server) — webhock 이벤트를 수신하여 자동배포를 수행하는 서버 입니다.
 
 ---
 
