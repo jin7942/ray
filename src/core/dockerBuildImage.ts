@@ -2,6 +2,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import { StepContext } from '../_types/context';
 import { logger } from '../utils/logger';
+import path from 'path';
 
 const execAsync = promisify(exec);
 
@@ -12,10 +13,13 @@ const execAsync = promisify(exec);
  */
 export async function dockerBuildImage(ctx: StepContext): Promise<void> {
     const { workspace, docker } = ctx;
-    const dockerfilePath = docker.path;
+
+    // workspace 기준으로 Dockerfile 경로 구성
+    const dockerfilePath = path.resolve(workspace, docker.path);
     const imageName = docker.image;
 
     logger.info(`Building Docker image: ${imageName}`);
+    logger.info(`Using Dockerfile at: ${dockerfilePath}`);
 
     const cmd = `docker build -t ${imageName} -f ${dockerfilePath} ${workspace}`;
 
