@@ -25,11 +25,11 @@ export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
     const networkOption = (): string[] => {
         return Array.isArray(docker.network) ? docker.network : docker.network ? [docker.network] : [];
     };
-    const volumesOption = () => {
+    const volumesOption = (() => {
         if (docker.volumes !== undefined && docker.volumes.length > 0) {
             return docker.volumes.map((volume: string) => `-v ${volume}`).join(' ');
         } else return '';
-    };
+    })();
 
     // Run new container
     logger.info(`Starting temporary container: ${temp}`);
