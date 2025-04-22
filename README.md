@@ -139,8 +139,7 @@ Want to see how to use RAY in a real server?
 
 ## Philosophy
 
-Deployment shouldn't be complicated.  
-RAY automates the essential steps in a simple, controlled, and hackable way — so you can deploy your project without the overhead.
+Ray is a lightweight CI/CD tool designed to let anyone experience automated deployment without complex configuration. It minimizes setup and maximizes usability, making it easy to use even for students or beginner developers with little to no deployment experience.
 
 ---
 
