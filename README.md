@@ -8,6 +8,8 @@
 
 [한국어 README 보기](./README.ko.md)
 
+![rayExample](./ray.png)
+
 **A lightweight, no-nonsense CI/CD automation tool.**
 
 RAY clones your GitHub repo, runs your build command, builds a Docker image, and replaces containers with zero downtime — all from a simple JSON config. No YAML, no cloud vendor lock-in, just code that ships.
