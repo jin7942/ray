@@ -119,9 +119,9 @@ const config = await loadProjectConfig('my-app');
 await runRayPipeline(config);
 ```
 
-### [document](./DOCUMENT.md)
+## API 명세
 
----
+API에 대한 문서는 다음 링크를 참고 하십시오. [document](./DOCUMENT.md)
 
 ## 시스템 요구 사항
 
@@ -129,19 +129,17 @@ await runRayPipeline(config);
 -   Git 설치
 -   Docker 설치 및 실행 중
 
----
-
 ## 구현 예제
 
 서버에서 사용 예
 
-## [RAY Auto Deploy Server](https://github.com/jin7942/ray-auto-deploy-server) — webhock 이벤트를 수신하여 자동배포를 수행하는 서버 입니다.
+### [RAY Auto Deploy Server](https://github.com/jin7942/ray-auto-deploy-server) — webhock 이벤트를 수신하여 자동배포를 수행하는 서버 입니다.
 
 ---
 
 ## 프로젝트 철학
 
-## Ray는 복잡한 설정 없이 누구나 자동배포를 경험할 수 있도록 설계된 경량형 CI/CD 도구입니다. 특히 배포 경험이 부족한 학생이나 초보 개발자도 쉽게 사용할 수 있도록, 설정은 최소화하고 사용성은 극대화했습니다.
+Ray는 복잡한 설정 없이 누구나 자동배포를 경험할 수 있도록 설계된 경량형 CI/CD 도구입니다. 특히 배포 경험이 부족한 학생이나 초보 개발자도 쉽게 사용할 수 있도록, 설정은 최소화하고 사용성은 극대화했습니다.
 
 ## 릴리즈 히스토리
 
@@ -153,13 +151,9 @@ await runRayPipeline(config);
 | v1.3.0 | 2025-04-12 | 이미지 빌드시 네트워크 지정 옵션 지원, Git clone 프로세스 개선 |
 | v1.4.0 | 2025-04-12 | 도커 컨테이너 볼륨 마운트 지원 추가.                           |
 
----
-
 ## 라이선스
 
-MIT
-
----
+본 프로젝트는 MIT 라이선스를 따릅니다.
 
 ## 기여
 

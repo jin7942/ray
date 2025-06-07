@@ -119,9 +119,9 @@ const config = await loadProjectConfig('my-app');
 await runRayPipeline(config);
 ```
 
-### [document](./DOCUMENT.md)
+## API Reference
 
----
+For documentation on the API, please see the following links:[document](./DOCUMENT.md)
 
 ## Requirements
 
@@ -129,21 +129,15 @@ await runRayPipeline(config);
 -   Git installed
 -   Docker installed and running
 
----
-
 ## Simple Example
 
 Want to see how to use RAY in a real server?
 
 ## Check out [RAY Auto Deploy Server](https://github.com/jin7942/ray-auto-deploy-server) — a lightweight webhook server that uses RAY for CI/CD automation.
 
----
-
 ## Philosophy
 
 Ray is a lightweight CI/CD tool designed to let anyone experience automated deployment without complex configuration. It minimizes setup and maximizes usability, making it easy to use even for students or beginner developers with little to no deployment experience.
-
----
 
 ## Release History
 
@@ -155,13 +149,9 @@ Ray is a lightweight CI/CD tool designed to let anyone experience automated depl
 | v1.3.0  | 2025-04-12 | Added --network support for ocker containers. Improved Git clone process    |
 | v1.4.0  | 2025-04-12 | Added support for Docker container volume mounts.                           |
 
----
-
 ## License
 
 MIT
-
----
 
 ## Contributing
 
