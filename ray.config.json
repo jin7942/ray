@@ -5,6 +5,7 @@
             "repo": "https://github.com/your/repo.git",
             "branch": "main",
             "docker": {
+                "type": "docker",
                 "image": "your-image",
                 "containername": "your-container",
                 "path": "./Dockerfile",

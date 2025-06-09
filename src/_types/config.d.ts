@@ -30,19 +30,25 @@ export interface Config {
      */
     docker: {
         /**
+         * Type of the docker or docker-compose
+         * @example "docker" or "compose"
+         */
+        type: 'docker' | 'compose';
+
+        /**
          * Name of the Docker image
          * @example "ray-image"
          */
-        image: string;
+        image?: string;
 
         /**
          * Name of the container to replace
          * @example "ray-container"
          */
-        containername: string;
+        containername?: string;
 
         /**
-         * Path to the Dockerfile (relative to project root)
+         * Path to the Dockerfile or docker-compose.yml (relative to project root)
          * @example "./Dockerfile"
          */
         path: string;
@@ -51,13 +57,13 @@ export interface Config {
          * Docker network to connect the container to
          * @example "["net1", "net2", "net3"]"
          */
-        network?: [string];
+        network?: string[];
 
         /**
          *  An array of volume mounts. Each volume specifies a path to mount from the host system
          * @example "["/host/path:/app/path", "/tmp/test:/app/test"]"
          */
-        volumes?: [string];
+        volumes?: string[];
     };
 
     /**

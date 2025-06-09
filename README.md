@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@jin7942/ray)](https://www.npmjs.com/package/@jin7942/ray)
 [![license](https://img.shields.io/npm/l/@jin7942/ray)](./LICENSE)
 
-**ver: 1.4.5**
+**ver: 1.5.0**
 
 [한국어 README 보기](./README.ko.md)
 
@@ -14,8 +14,6 @@
 
 RAY clones your GitHub repo, runs your build command, builds a Docker image, and replaces containers with zero downtime — all from a simple JSON config. No YAML, no cloud vendor lock-in, just code that ships.
 
----
-
 ## Features
 
 -   Clone GitHub repositories
@@ -24,15 +22,11 @@ RAY clones your GitHub repo, runs your build command, builds a Docker image, and
 -   JSON-based config file
 -   CLI and library usage supported
 
----
-
 ## Installation
 
 ```bash
 npm install -g @jin7942/ray
 ```
-
----
 
 ## CLI Usage
 
@@ -44,8 +38,6 @@ ray run <project>      # Run a specific project
 ray help               # Show help
 ```
 
----
-
 ## Configuration Example (`ray.config.json`)
 
 ```jsonc
@@ -55,13 +47,12 @@ ray help               # Show help
             "name": "my-app",
             "repo": "https://github.com/user/my-app.git",
             "branch": "main",
-            //"buildCommand": "npm run build",
-            // As of v1.2.0, RAY no longer executes buildCommand during deployment.
-            // You must define the build process directly inside your Dockerfile.
             "docker": {
+                // Added support for docker-compose starting from v1.5.0.
+                "type": "docker | compose",
                 "image": "my-app-image",
                 "containername": "my-app-container",
-                "path": "./Dockerfile",
+                "path": "./Dockerfile", // or "./docker-compose.yml"
                 "network": ["net1", "net2"], // Added --network support for Docker containers
                 "volumes": ["/host/path:/app/path", "/tmp/test:/app/test"] // Added support for Docker container volume mounts.
             },
@@ -108,8 +99,6 @@ CMD ["node", "dist/server.js"]
 
 ### You must write your build logic inside the Dockerfile. RAY does not run build commands anymore as of v1.2.0.
 
----
-
 ## Library Usage
 
 ```ts
@@ -133,7 +122,7 @@ For documentation on the API, please see the following links:[document](./DOCUME
 
 Want to see how to use RAY in a real server?
 
-## Check out [RAY Auto Deploy Server](https://github.com/jin7942/ray-auto-deploy-server) — a lightweight webhook server that uses RAY for CI/CD automation.
+**Check out [RAY Auto Deploy Server](https://github.com/jin7942/ray-auto-deploy-server) — a lightweight webhook server that uses RAY for CI/CD automation.**
 
 ## Philosophy
 
@@ -148,6 +137,7 @@ Ray is a lightweight CI/CD tool designed to let anyone experience automated depl
 | v1.2.0  | 2025-04-11 | Supports external log directory mounting. Build process moved to Dockerfile |
 | v1.3.0  | 2025-04-12 | Added --network support for ocker containers. Improved Git clone process    |
 | v1.4.0  | 2025-04-12 | Added support for Docker container volume mounts.                           |
+| v1.5.0  | 2025-06-09 | Supports deployment using both Dockerfile and docker-compose                |
 
 ## License
 

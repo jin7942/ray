@@ -61,6 +61,7 @@ async function createDefaultConfig() {
                 branch: 'main',
                 // buildCommand: 'npm run build',
                 docker: {
+                    type: 'docker',
                     image: 'your-image',
                     containername: 'your-container',
                     path: './Dockerfile',

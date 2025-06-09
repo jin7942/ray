@@ -3,7 +3,6 @@
  * [######....] — no BS, no animations, just raw deployment status.
  * Designed for CLI tools that mean business.
  *
- * Shoutout to GPT — for helping me keep it clean, fast, and unforgiving.
  */
 export class ProgressBar {
     private current = 0;
