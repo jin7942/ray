@@ -24,7 +24,7 @@ export async function dockerBuildImage(ctx: StepContext): Promise<void> {
     const cmd = `docker build -t ${imageName} -f ${dockerfilePath} ${workspace}`;
 
     try {
-        await execAsync(cmd);
+        await execAsync(cmd, { maxBuffer: 10 * 1024 * 1024 });
         logger.info('Docker image built successfully.');
     } catch (e) {
         throw new Error(`Docker build failed: ${e instanceof Error ? e.message : String(e)}`);
