@@ -20,8 +20,10 @@ export async function runRayPipeline(config: Config): Promise<void> {
         // bar.step('Building project...');
         // await buildProject(ctx);
 
-        bar.step('Building Docker image...');
-        await dockerBuildImage(ctx);
+        if (ctx.docker?.type == 'docker') {
+            bar.step('Building Docker image...');
+            await dockerBuildImage(ctx);
+        }
 
         bar.step('Deploying container...');
         await dockerDeployContainer(ctx);
