@@ -40,14 +40,16 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         return input.length > 0 ? null : 'You must enter project name';
     });
     const repo = await askValidated('GitHub repository URL: ', (input) => {
-        return input.startsWith('https://') ? null : 'The GitHub repository URL is must start with https://';
+        return input.startsWith('https://')
+            ? null
+            : 'The GitHub repository URL is must start with https://';
     });
     const branch = await askValidated(
         'Branch to deploy (default: main): ',
         (input) => {
             return input.length > 0 ? null : '';
         },
-        'main' // default value
+        'main', // default value
     );
     // const buildCommand = await askValidated(
     //     'Build command (default: npm run build): ',
@@ -68,7 +70,7 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         (input) => {
             return input.length > 0 ? null : '';
         },
-        './Dockerfile' // deafult value
+        './Dockerfile', // default value
     );
 
     const logdir = await askValidated(
@@ -76,7 +78,7 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         (input) => {
             return input.length > 0 ? null : '';
         },
-        './logs' // default value
+        './logs', // default value
     );
     const maxLogDirSizeInput = await askValidated(
         'Max log dir size in bytes (default: 5242880): ',
@@ -84,7 +86,7 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
             const num = Number(input);
             return isNaN(num) || num <= 0 ? 'Must be a positive number' : null;
         },
-        '5242880' // default value
+        '5242880', // default value
     );
     const maxLogDirSize = Number(maxLogDirSizeInput);
     const logLevel = await askValidated(
@@ -92,7 +94,7 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         (input) => {
             return input.length > 0 ? null : '';
         },
-        'info'
+        'info',
     );
 
     const config: Config = {
@@ -101,6 +103,7 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         branch,
         // buildCommand,
         docker: {
+            type: 'docker',
             image,
             containername,
             path: dockerfilePath,
