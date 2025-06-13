@@ -30,7 +30,7 @@ export async function runRayPipeline(config: Config): Promise<void> {
 
         bar.step('Deployment completed.');
     } catch (e) {
-        // bar.fail('❌ Deployment failed.');
+        // bar.fail('Deployment failed.');
         if (e instanceof Error) {
             logger.error(e);
         } else {
