@@ -25,7 +25,7 @@ export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
 
     if (docker?.type === 'compose') {
         // Compose 배포 처리
-        const composeFile = docker.path;
+        const composeFile = docker.path.compose;
         if (!composeFile) {
             throw new Error('docker-compose.yml path is required for deploy type "compose".');
         }

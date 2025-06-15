@@ -39,19 +39,26 @@ export interface Config {
          * Name of the Docker image
          * @example "ray-image"
          */
-        image?: string;
+        image: string;
 
         /**
          * Name of the container to replace
          * @example "ray-container"
          */
-        containername?: string;
+        containername: string;
 
         /**
          * Path to the Dockerfile or docker-compose.yml (relative to project root)
          * @example "./Dockerfile"
          */
-        path: string;
+        path: {
+            dockerfile: string;
+
+            /**
+             * If you're using docker-compose, enter the docker-compose.yml path
+             */
+            compose?: string;
+        };
 
         /**
          * Docker network to connect the container to

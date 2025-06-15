@@ -52,7 +52,12 @@ ray help               # Show help
                 "type": "docker | compose",
                 "image": "my-app-image",
                 "containername": "my-app-container",
-                "path": "./Dockerfile", // or "./docker-compose.yml"
+                "path": {
+                    "dockerfile": "./Dockerfile",
+                    // Required when type == "compose"
+                    "compose": "./docker-compose.yml"
+                },
+                // Only used when type == "docker"
                 "network": ["net1", "net2"], // Added --network support for Docker containers
                 "volumes": ["/host/path:/app/path", "/tmp/test:/app/test"] // Added support for Docker container volume mounts.
             },

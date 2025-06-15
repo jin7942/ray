@@ -106,7 +106,9 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
             type: 'docker',
             image,
             containername,
-            path: dockerfilePath,
+            path: {
+                dockerfile: dockerfilePath,
+            },
         },
         internal: {
             logdir,
