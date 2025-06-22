@@ -1,25 +1,17 @@
 {
     "projects": [
         {
-            "name": "my-project",
-            "repo": "https://github.com/your/repo.git",
+            "name": "used_market",
+            "repo": "https://github.com/jin7942/used_market.git",
             "branch": "main",
             "docker": {
-                "type": "docker",
-                "image": "your-image",
-                "containername": "your-container",
-                "path": "./Dockerfile",
-                "network": "",
-                "volumes": ""
-            },
-            "internal": {
-                "logdir": "./logs",
-                "maxLogDirSize": 5242880,
-                "logLevel": "info",
-                "envFilePath": "./.env"
-            },
-            "env": {
-                "NODE_ENV": "production"
+                "type": "compose",
+                "image": "used-market-backend",
+                "containername": "used-market-backend",
+                "path": {
+                    "dockerfile": "./Dockerfile",
+                    "compose": "/srv/deploy/nginx-config/deploy/usedmarket/docker-compose.yml"
+                }
             }
         }
     ]

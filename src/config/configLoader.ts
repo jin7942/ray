@@ -12,14 +12,19 @@ import { setGlobalConfig } from './global';
  * @returns A Promise resolving to the matching project's Config object.
  * @throws If the file is missing, invalid, or the project is not found.
  */
-export async function loadProjectConfig(projectName: string, configPath = './ray.config.json'): Promise<Config> {
+export async function loadProjectConfig(
+    projectName: string,
+    configPath = './ray.config.json',
+): Promise<Config> {
     const absolutePath = path.resolve(configPath);
 
     try {
         const raw = await fs.readFile(absolutePath, 'utf-8');
         const configFile: ConfigFile = JSON.parse(raw);
 
-        const project = configFile.projects.find((p) => p.name.trim() === projectName.trim());
+        const project = configFile.projects.find(
+            (p) => p.name.trim().toLowerCase() === projectName.trim().toLowerCase(),
+        );
 
         if (!project) {
             logger.error(`Project "${projectName}" not found in config file.`);

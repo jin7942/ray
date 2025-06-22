@@ -15,6 +15,7 @@ export async function dockerBuildImage(ctx: StepContext): Promise<void> {
     const { workspace, docker } = ctx;
 
     // workspace 기준으로 Dockerfile 경로 구성
+
     const dockerfilePath = path.resolve(workspace, docker.path.dockerfile);
     const imageName = docker.image;
 

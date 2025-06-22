@@ -64,7 +64,9 @@ async function createDefaultConfig() {
                     type: 'docker',
                     image: 'your-image',
                     containername: 'your-container',
-                    path: './Dockerfile',
+                    path: {
+                        dockerfile: './Dockerfile',
+                    },
                     network: '',
                     volumes: '',
                 },

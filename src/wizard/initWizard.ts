@@ -101,7 +101,6 @@ export async function initConfigWizard(outputPath = './ray.config.json'): Promis
         name,
         repo,
         branch,
-        // buildCommand,
         docker: {
             type: 'docker',
             image,
