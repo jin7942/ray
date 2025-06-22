@@ -27,7 +27,7 @@ export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
         // Compose 배포 처리
         const composeFile = docker.path.compose;
         if (!composeFile) {
-            throw new Error('docker-compose.yml path is required for deploy type "compose".');
+            throw new Error('docker compose.yml path is required for deploy type "compose".');
         }
 
         const composePath = path.resolve(workspace, composeFile);
@@ -35,8 +35,8 @@ export async function dockerDeployContainer(ctx: StepContext): Promise<void> {
 
         try {
             logger.info(`Executing: docker-compose -f ${composePath} up -d`);
-            await execAsync(`docker-compose -f ${composePath} up -d`);
-            logger.info('docker-compose deployed successfully.');
+            await execAsync(`docker compose -f ${composePath} up -d`);
+            logger.info('docker compose deployed successfully.');
         } catch (e) {
             throw new Error(
                 `docker-compose deploy failed: ${e instanceof Error ? e.message : String(e)}`,
